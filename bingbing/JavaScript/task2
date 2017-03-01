@@ -59,7 +59,7 @@ var aqiData = [
    var text=[];
    var ul=document.getElementById('aqi-list');
    for(i=0;i<result.length;i++){ 
-       text[i]='第'+(i+1)+'名：'+result[0][0]+','+result[0][1];
+       text[i]='第'+(i+1)+'名：'+result[i][0]+','+result[i][1];
         var txt=document.createTextNode(text[i]);
         var li=document.createElement('li');
         li.appendChild(txt);
