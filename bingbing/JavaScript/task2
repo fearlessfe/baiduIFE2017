@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+
+
+
+(function () {
+
+  /*
+  在注释下方编写代码
+  遍历读取aqiData中各个城市的数据
+  将空气质量指数大于60的城市显示到aqi-list的列表中
+  */
+// 选出空气质量大于60的城市
+  var len=aqiData.length;
+  var aqiAr=[],result=[];
+  for (var i = 0; i <len; i++) {
+    if (aqiData[i][1]>60) {
+      aqiAr.push(aqiData[i]);
+    }
+  }
+// 将结果按照空气质量排序，取出空气质量，存储形式为90:0，冒号后面为原数组中的位置
+  var len1=aqiAr.length;
+  var temp=[],result=[];
+  for (i = 0; i < len1; i++) {
+    temp[i]=aqiAr[i][1]+':'+i;
+  }
+//排序，只会对冒号前面的数字，即空气质量排序
+  temp.sort();
+//根据空气质量数据后的索引，将原数组内容存到result中，
+  var index;
+  for(i=0;i<len1;i++){ 
+        index =temp[i].split(':')[1]; 
+        result[i] = aqiAr[index]; 
+    } 
+//创建li、文本节点，将其加入到ul中
+   var text=[];
+   var ul=document.getElementById('aqi-list');
+   for(i=0;i<result.length;i++){ 
+       text[i]='第'+(i+1)+'名：'+result[0][0]+','+result[0][1];
+        var txt=document.createTextNode(text[i]);
+        var li=document.createElement('li');
+        li.appendChild(txt);
+        ul.appendChild(li);
+    } 
+})();
+
+
+</script>
+</body>
+</html>
