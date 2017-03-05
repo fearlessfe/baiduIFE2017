@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>队列</title>
+	<style>
+		.num{
+			display: inline-block;
+			background-color: red;
+			margin: 4px;
+			padding: 4px;
+			font-size: 4em;
+		}
+	</style>
+</head>
+<body>
+	<div >
+		<input type="text" id="input">
+		<button id="left-in">左侧入</button>
+		<button id="right-in">右侧入</button>
+		<button id='left-out'>左侧出</button>
+		<button id="right-out">右侧出</button>
+		<p id='wrap'></p>
+	</div>
+	<script>
+		var wrap=document.getElementById('wrap');
+		var btn1=document.getElementById('left-in');
+		var btn2=document.getElementById('right-in');
+		var btn3=document.getElementById('left-out');
+		var btn4=document.getElementById('right-out');
+		var input=document.getElementById('input');
+		
+		btn2.onclick=function(){
+			
+			var num=input.value;
+			
+			var txt=document.createTextNode(num);
+			var p=document.createElement('p');
+			p.appendChild(txt);
+			p.className='num';
+			wrap.appendChild(p);	
+		}
+		btn1.onclick=function(){
+			var num=input.value;
+			var txt=document.createTextNode(num);
+			var p=document.createElement('p');
+			p.appendChild(txt);
+			p.className='num';
+			wrap.insertBefore(p,wrap.firstChild);
+		}
+		btn3.onclick=function(){
+			
+			wrap.removeChild(wrap.childNodes[0]);	
+		}
+		btn4.onclick=function(){
+			wrap.removeChild(wrap.lastChild);
+				
+		}
+
+		
+ 
+
+
+
+
+
+
+	</script>
+</body>
+</html>
