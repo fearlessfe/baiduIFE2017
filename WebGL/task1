@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebGL01</title>
+	<script type='text/javascript' src=three.js></script>
+	<script>
+	function init(){
+		//渲染
+		var renderer=new THREE.WebGLRenderer({
+			antialias: true,   //  开启消除锯齿,默认false
+    		precision: "highp"   // 渲染精度  highp/mediump/lowp
+		});
+		renderer.setSize(400,300);
+		document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+		renderer.setClearColor(0x333333);
+
+		//场景
+		var scene=new THREE.Scene();
+
+		//照相机
+		var camera=new THREE.PerspectiveCamera(60,4/3,1,10);
+		camera.position.set(3,2,4);
+		camera.lookAt(new THREE.Vector3(0,0,0));
+		scene.add(camera);
+
+		//长方体
+		var cube=new THREE.Mesh(new THREE.CubeGeometry(4,2,2),
+			new THREE.MeshBasicMaterial({
+				color:0x999999,
+			})
+		);
+		scene.add(cube);
+		//圆环面
+		var torus1=new THREE.Mesh(new THREE.TorusGeometry(0.4,0.16,15,21),
+			new THREE.MeshBasicMaterial({
+				color:0xffffff,
+			})
+		);
+		torus1.position.set(-1.2,-1,1);
+		scene.add(torus1);
+
+		var torus2=new THREE.Mesh(new THREE.TorusGeometry(0.4,0.16,15,21),
+			new THREE.MeshBasicMaterial({
+				color:0x999999,
+			})
+		);
+		torus1.position.set(1.2,-1,1);
+		scene.add(torus2);
+		
+
+
+		renderer.render(scene,camera);
+
+	}
+
+	</script>
+</head>
+<body onload='init()'>
+	
+</body>
+</html>
