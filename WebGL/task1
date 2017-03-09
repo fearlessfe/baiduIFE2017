@@ -34,7 +34,7 @@
 		//圆环面
 		var torus1=new THREE.Mesh(new THREE.TorusGeometry(0.4,0.16,15,21),
 			new THREE.MeshBasicMaterial({
-				color:0xffffff,
+				color:0x999999,
 			})
 		);
 		torus1.position.set(-1.2,-1,1);
@@ -45,10 +45,10 @@
 				color:0x999999,
 			})
 		);
-		torus1.position.set(1.2,-1,1);
+		torus2.position.set(1.2,-1,1);
 		scene.add(torus2);
 		
-
+		
 
 		renderer.render(scene,camera);
 
